@@ -45,4 +45,13 @@ public class IVolImpl implements IVol{
 		
 	}
 
+	@Override
+	public Vol chercherId(String codeVol) {
+		
+		Vol v = em.find(Vol.class, codeVol);
+		
+		
+		return v;
+	}
+
 }

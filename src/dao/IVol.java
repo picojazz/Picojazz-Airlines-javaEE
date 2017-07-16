@@ -11,6 +11,7 @@ public interface IVol {
 	public List<Vol> rechercheVol(String motCle);
 	public Vol modifierVol(Vol v);
 	public void supprimerVol(String codeVol);
+	public Vol chercherId(String codeVol);
 	
 
 }

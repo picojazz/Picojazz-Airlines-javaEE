@@ -1,9 +1,14 @@
 package entities;
 
-import java.util.Date;
+
+
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 @Entity
 public class Vol {
 	@Id
@@ -15,6 +20,9 @@ public class Vol {
 	private String heureArrivee;
 	private float tarif;
 	private int nbPassagers;
+	@ManyToMany
+	@JoinTable(name="volPassager",joinColumns=@JoinColumn(name="idVol"),inverseJoinColumns=@JoinColumn(name="idClient"))
+	private List<Client> passagers;
 	public Vol(String codeVol, String villeDepart, String villeArrivee,
 			String dateVol, String heureDepart, String heureArrivee,
 			float tarif, int nbPassagers) {
@@ -78,6 +86,13 @@ public class Vol {
 	}
 	public void setNbPassagers(int nbPassagers) {
 		this.nbPassagers = nbPassagers;
+	}
+	
+	public List<Client> getPassagers() {
+		return passagers;
+	}
+	public void setPassagers(List<Client> passagers) {
+		this.passagers = passagers;
 	}
 	@Override
 	public String toString() {

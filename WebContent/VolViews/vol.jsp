@@ -7,7 +7,7 @@
 <title>Liste des vols</title>
 </head>
 <body>
-	<%@include file="menu.jsp" %>
+	<%@include file="../menu.jsp" %>
 	
 	<div class="container-fluid">
 		<div class="row">
@@ -54,8 +54,8 @@
 							<td>${v.heureArrivee }</td>
 							<td>${v.tarif }</td>
 							<td>${v.nbPassagers }</td>
-							<td><a href="#" class="btn btn-primary">Voir</a></td>
-							<td><a href="#" class="btn btn-success">Editer</a></td>
+							<td><a href="vol?action=voir&codeVol=${v.codeVol}" class="btn btn-primary">Voir</a></td>
+							<td><a href="vol?action=modif&codeVol=${v.codeVol}" class="btn btn-success">Editer</a></td>
 							<td><a href="vol?action=supp&codeVol=${v.codeVol}" onclick="return confirm('etes vous sur de vouloir supprimer ce vol')"  class="btn btn-danger">Supprimer</a></td>
 						</tr>
 						</c:forEach>

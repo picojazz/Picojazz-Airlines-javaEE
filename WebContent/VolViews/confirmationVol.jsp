@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<%@include file="menu.jsp" %>
+	<%@include file="../menu.jsp" %>
 
 	<div class="container">
 		<div class="row">
