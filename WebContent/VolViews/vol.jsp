@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" >
-<title>Liste des vols</title>
+<title>Gestion des vols</title>
 </head>
 <body>
 	<%@include file="../menu.jsp" %>

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import entities.Client;
 import entities.Vol;
@@ -23,25 +24,40 @@ public class IClientImpl implements IClient{
 
 	@Override
 	public Client modifierClient(Client cl) {
-		// TODO Auto-generated method stub
-		return null;
+		et.begin();
+		em.merge(cl);
+		et.commit();
+		return cl;
 	}
 
 	@Override
 	public Client rechercherId(long numeroPasseport) {
-		// TODO Auto-generated method stub
-		return null;
+		Client cl = em.find(Client.class, numeroPasseport);
+		return cl;
 	}
 
 	@Override
 	public List<Client> rechercheClient(String motCle) {
-		// TODO Auto-generated method stub
-		return null;
+		Long mot;
+		if(motCle.equalsIgnoreCase("")){
+			Query req = em.createQuery("select cl from Client cl ");
+			
+			return req.getResultList();
+		}else{
+		 mot = Long.parseLong(motCle);
+		 Query req = em.createQuery("select cl from Client cl where cl.numeroPassport  = :x");
+		req.setParameter("x", mot);
+		return req.getResultList();
+		}
+		
 	}
 
 	@Override
 	public void supprimerClient(long numeroPasseport) {
-		// TODO Auto-generated method stub
+		et.begin();
+		Client cl = em.find(Client.class, numeroPasseport);
+		em.remove(cl);
+		et.commit();
 		
 	}
 

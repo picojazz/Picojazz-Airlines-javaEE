@@ -21,7 +21,7 @@ public class Vol {
 	private float tarif;
 	private int nbPassagers;
 	@ManyToMany
-	@JoinTable(name="volPassager",joinColumns=@JoinColumn(name="idVol"),inverseJoinColumns=@JoinColumn(name="idClient"))
+	@JoinTable(name="volPassager",joinColumns={ @JoinColumn(name="idVol") },inverseJoinColumns={ @JoinColumn(name="idClient") })
 	private List<Client> passagers;
 	public Vol(String codeVol, String villeDepart, String villeArrivee,
 			String dateVol, String heureDepart, String heureArrivee,
