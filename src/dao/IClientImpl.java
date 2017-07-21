@@ -67,4 +67,10 @@ public class IClientImpl implements IClient{
 		return null;
 	}
 
+	@Override
+	public List<Vol> listeVols(long numeroPasseport) {
+		
+		return null;
+	}
+
 }

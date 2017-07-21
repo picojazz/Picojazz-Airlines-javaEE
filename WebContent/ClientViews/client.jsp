@@ -23,7 +23,7 @@
 					<div class="panel-body">
 						<form class="form-inline" action="client" method="get">
 							<div class="form-group">
-								<label>Mot Cle :</label>
+								<label>Numero PassePort :</label>
 								<input type="text" name="motCle" class="form-control" value="${Lcl.motCle}"></input>
 								<input type="submit" name="action" class="btn btn-primary" value="rechercher"></input>
 							</div>

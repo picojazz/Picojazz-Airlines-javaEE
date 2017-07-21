@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 @Entity
 public class Client {
 	@Id
@@ -14,6 +15,8 @@ public class Client {
 	private String dateNaiss;
 	@ManyToMany(mappedBy="passagers")
 	private List<Vol> vols;
+	@OneToMany(mappedBy="client")
+	private List<Reservation> reservations;
 	public Client(long numeroPassport, String nom, String prenom,
 			String dateNaiss) {
 		super();
@@ -55,12 +58,14 @@ public class Client {
 	public void setVols(List<Vol> vols) {
 		this.vols = vols;
 	}
-	@Override
-	public String toString() {
-		return "Client [numeroPassport=" + numeroPassport + ", nom=" + nom
-				+ ", prenom=" + prenom + ", dateNaiss=" + dateNaiss + ", vols="
-				+ vols + "]";
+	public List<Reservation> getReservations() {
+		return reservations;
 	}
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
+	}
+	
+	
 	
 
 }

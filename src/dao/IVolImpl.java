@@ -7,6 +7,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import entities.Client;
 import entities.Vol;
 
 public class IVolImpl implements IVol{
@@ -53,5 +54,7 @@ public class IVolImpl implements IVol{
 		
 		return v;
 	}
+
+	
 
 }

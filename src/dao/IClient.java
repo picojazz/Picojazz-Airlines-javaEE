@@ -14,6 +14,7 @@ public interface IClient {
 	public List<Client> rechercheClient(String motCle);
 	public void supprimerClient(long numeroPasseport);
 	public List<Vol> listeVolClient(long numeroPasseport);
+	public List<Vol> listeVols(long numeroPasseport);
 	
 
 }

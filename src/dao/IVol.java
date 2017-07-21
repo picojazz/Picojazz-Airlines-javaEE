@@ -4,6 +4,7 @@ package dao;
 
 import java.util.List;
 
+import entities.Client;
 import entities.Vol;
 
 public interface IVol {

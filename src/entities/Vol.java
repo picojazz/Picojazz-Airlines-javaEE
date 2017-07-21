@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 @Entity
 public class Vol {
 	@Id
@@ -23,6 +24,8 @@ public class Vol {
 	@ManyToMany
 	@JoinTable(name="volPassager",joinColumns={ @JoinColumn(name="idVol") },inverseJoinColumns={ @JoinColumn(name="idClient") })
 	private List<Client> passagers;
+	@OneToMany(mappedBy="vol")
+	private List<Reservation> reservations;
 	public Vol(String codeVol, String villeDepart, String villeArrivee,
 			String dateVol, String heureDepart, String heureArrivee,
 			float tarif, int nbPassagers) {
@@ -87,21 +90,20 @@ public class Vol {
 	public void setNbPassagers(int nbPassagers) {
 		this.nbPassagers = nbPassagers;
 	}
-	
 	public List<Client> getPassagers() {
 		return passagers;
 	}
 	public void setPassagers(List<Client> passagers) {
 		this.passagers = passagers;
 	}
-	@Override
-	public String toString() {
-		return "Vol [codeVol=" + codeVol + ", villeDepart=" + villeDepart
-				+ ", villeArrivee=" + villeArrivee + ", dateVol=" + dateVol
-				+ ", heureDepart=" + heureDepart + ", heureArrivee="
-				+ heureArrivee + ", tarif=" + tarif + ", nbPassagers="
-				+ nbPassagers + "]";
+	public List<Reservation> getReservations() {
+		return reservations;
 	}
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
+	}
+	
+	
 	
 	
 }
