@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import dao.IVol;
 import dao.IVolImpl;
 import entities.Vol;
@@ -18,7 +21,9 @@ public class VolControleur extends HttpServlet{
 
 	@Override
 	public void init() throws ServletException {
-		volDao =new IVolImpl();
+		//volDao =new IVolImpl();
+		ApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(this.getServletContext()); 
+		volDao = ctx.getBean(IVol.class);
 		Lvol = new ListeVolsModele();
 
 	}

@@ -72,5 +72,8 @@ public class IClientImpl implements IClient{
 		
 		return null;
 	}
+	public void init(){
+		System.out.println("initialisation...................");
+	}
 
 }

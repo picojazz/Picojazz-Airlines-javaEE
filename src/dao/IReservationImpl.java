@@ -84,5 +84,9 @@ public class IReservationImpl implements IReservation{
 
 	}
 	
+	public void init(){
+		System.out.println("initialisation...................");
+	}
+	
 	
 }

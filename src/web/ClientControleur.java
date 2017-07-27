@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import dao.IClient;
 import dao.IClientImpl;
 import dao.IVol;
@@ -23,10 +26,13 @@ public class ClientControleur extends HttpServlet{
 	
 	@Override
 	public void init() throws ServletException {
-		cldao = new IClientImpl();
+		//cldao = new IClientImpl();
 		Lcl = new ListeClientsModele();
 		lv = new ListeVolsModele();
-		vdao = new IVolImpl();
+		//vdao = new IVolImpl();
+		ApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(this.getServletContext()); 
+		vdao = ctx.getBean(IVol.class);
+		cldao = ctx.getBean(IClient.class);
 	}
 	
 	@Override

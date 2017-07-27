@@ -54,6 +54,10 @@ public class IVolImpl implements IVol{
 		
 		return v;
 	}
+	
+	public void init(){
+		System.out.println("initialisation...................");
+	}
 
 	
 

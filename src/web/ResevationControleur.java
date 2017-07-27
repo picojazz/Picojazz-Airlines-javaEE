@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import dao.IClient;
 import dao.IClientImpl;
 import dao.IReservation;
@@ -20,7 +23,7 @@ import entities.Vol;
 
 
 @WebServlet(name="rc",urlPatterns={ "/reservation"})
-public class ResevationControleur extends HttpServlet{
+public class ResevationControleur extends HttpServlet{ 
 	private IReservation rdao;
 	private ListeReservationModele lr;
 	private IVol vdao;
@@ -29,10 +32,14 @@ public class ResevationControleur extends HttpServlet{
 	
 	@Override
 	public void init() throws ServletException {
-		rdao = new IReservationImpl();
+		//rdao = new IReservationImpl();
 		lr = new ListeReservationModele();
-		vdao = new IVolImpl();
-		cldao = new IClientImpl();
+		//vdao = new IVolImpl();
+		//cldao = new IClientImpl();
+		ApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(this.getServletContext()); 
+		vdao = ctx.getBean(IVol.class);
+		cldao = ctx.getBean(IClient.class);
+		rdao = ctx.getBean(IReservation.class);
 		
 	}
 	
