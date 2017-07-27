@@ -80,6 +80,56 @@
 		</div>
 		
 	</div>
+
+
+		<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Nouvelle Reservation</h4>
+      </div>
+      <form action="reservation" method="post">
+      <div class="modal-body">
+      
+      <div class="row">
+      <div class="col-md-7 ">
+        <div class="form-group">
+        	<label>Choix du vol</label>
+        	<select class="form-control" name="vol">
+        		<c:forEach items="${lv.listes }" var="v">
+        			<option value="${v.codeVol}">${v.villeDepart} - ${v.villeArrivee}  ${v.heureDepart} - ${v.heureArrivee}  ${v.dateVol}</option>
+        		</c:forEach>
+        	</select>
+        </div>
+      </div>
+       <div class="col-md-5 ">
+        <div class="form-group">
+        	<label>Type Payement</label>
+        	<select name="typePaye" class="form-control">
+        		<option value="espece">espece</option>
+        		<option value="checque">checque</option>
+        	</select>
+        	<input type="hidden" name="numeroPassport" value="${cl.numeroPassport }">
+        </div>
+      </div>
+      </div>
+     
+      
+      
+      </div>
+      <div class="modal-footer">
+        
+        <input type="submit" class="btn btn-lg btn-primary" name="action" value="Ajouter">
+
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	
 	
 

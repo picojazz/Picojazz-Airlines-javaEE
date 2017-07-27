@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" >
-<title>Details d'une Reservation</title>
+<title>Details de la Reservation</title>
 </head>
 <body>
 		<%@include file="../menu.jsp" %>
@@ -13,7 +13,7 @@
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
 				<div class="panel panel-primary">
-					<div class="panel-heading">Details d'une reservation</div>
+					<div class="panel-heading"> Reservation</div>
 					<div class="panel-body">
 					<h2 class="text-center">Details de la reservation</h2>
 					<div class="row">

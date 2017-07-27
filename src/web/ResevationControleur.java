@@ -1,6 +1,7 @@
 package web;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,8 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.IClient;
+import dao.IClientImpl;
 import dao.IReservation;
 import dao.IReservationImpl;
+import dao.IVol;
+import dao.IVolImpl;
 import entities.Reservation;
 import entities.Vol;
 
@@ -18,12 +23,16 @@ import entities.Vol;
 public class ResevationControleur extends HttpServlet{
 	private IReservation rdao;
 	private ListeReservationModele lr;
+	private IVol vdao;
+	private IClient cldao;
 	
 	
 	@Override
 	public void init() throws ServletException {
 		rdao = new IReservationImpl();
 		lr = new ListeReservationModele();
+		vdao = new IVolImpl();
+		cldao = new IClientImpl();
 		
 	}
 	
@@ -41,7 +50,14 @@ public class ResevationControleur extends HttpServlet{
 				
 				
 			}else if(action.equals("Ajouter")){
-				
+				String codeVol = request.getParameter("vol");
+				String typePaye = request.getParameter("typePaye");
+				long numeroPassport = Long.parseLong(request.getParameter("numeroPassport"));
+				Vol v =  vdao.chercherId(codeVol);
+				Reservation r = new Reservation(typePaye, new Date(), v.getTarif(), 
+						cldao.rechercherId(numeroPassport),v);
+				request.setAttribute("r", rdao.addReservation(r));
+				request.getRequestDispatcher("ReservationViews/reservationDetails.jsp").forward(request, response);
 				
 			}else if(action.equals("supp")){
 				
@@ -62,6 +78,12 @@ public class ResevationControleur extends HttpServlet{
 			response.sendRedirect("reservation?motCle=&action=rechercher");
 		}
 		
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 }

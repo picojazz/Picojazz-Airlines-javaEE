@@ -14,14 +14,14 @@ public class Reservation {
 	private long id;
 	private String typePaye;
 	private Date dateReservation;
-	private int montant;
+	private float montant;
 	@ManyToOne
 	@JoinColumn(name="idClient")
 	private Client client;
 	@ManyToOne
 	@JoinColumn(name="idVol")
 	private Vol vol;
-	public Reservation(String typePaye, Date dateReservation, int montant,
+	public Reservation(String typePaye, Date dateReservation, float montant,
 			Client client, Vol vol) {
 		super();
 		this.typePaye = typePaye;
@@ -51,7 +51,7 @@ public class Reservation {
 	public void setDateReservation(Date dateReservation) {
 		this.dateReservation = dateReservation;
 	}
-	public int getMontant() {
+	public float getMontant() {
 		return montant;
 	}
 	public void setMontant(int montant) {

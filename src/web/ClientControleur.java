@@ -10,17 +10,23 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.IClient;
 import dao.IClientImpl;
+import dao.IVol;
+import dao.IVolImpl;
 import entities.Client;
 
 @WebServlet(name="cc", urlPatterns={ "/client" })
 public class ClientControleur extends HttpServlet{
 	private IClient cldao;
 	private ListeClientsModele Lcl;
+	private ListeVolsModele lv;
+	private IVol vdao;
 	
 	@Override
 	public void init() throws ServletException {
 		cldao = new IClientImpl();
 		Lcl = new ListeClientsModele();
+		lv = new ListeVolsModele();
+		vdao = new IVolImpl();
 	}
 	
 	@Override
@@ -64,6 +70,8 @@ public class ClientControleur extends HttpServlet{
 			}else if(action.equals("voir")){
 				long numeroPassport = Long.parseLong(request.getParameter("numeroPassport"));
 				request.setAttribute("cl",cldao.rechercherId(numeroPassport));
+				lv.setListes(vdao.rechercheVol(""));
+				request.setAttribute("lv", lv);
 				request.getRequestDispatcher("ClientViews/clientDetails.jsp").forward(request, response);
 			}
 			

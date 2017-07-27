@@ -48,7 +48,10 @@ public class IReservationImpl implements IReservation{
 
 	@Override
 	public void supprimer(long id) {
-		// TODO Auto-generated method stub
+		et.begin();
+		Reservation r = em.find(Reservation.class, id);
+		em.remove(r);
+		et.commit();
 		
 	}
 
