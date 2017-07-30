@@ -33,6 +33,7 @@ public class IReservationImpl implements IReservation{
 		
 		vdao.modifierVol(v);
 		em.persist(r);
+		
 		et.commit();
 		
 		

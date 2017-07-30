@@ -75,6 +75,8 @@ public class ClientControleur extends HttpServlet{
 				request.getRequestDispatcher("ClientViews/confirmationClient.jsp").forward(request, response);
 			}else if(action.equals("voir")){
 				long numeroPassport = Long.parseLong(request.getParameter("numeroPassport"));
+				
+				
 				request.setAttribute("cl",cldao.rechercherId(numeroPassport));
 				lv.setListes(vdao.rechercheVol(""));
 				request.setAttribute("lv", lv);

@@ -32,7 +32,11 @@ public class IClientImpl implements IClient{
 
 	@Override
 	public Client rechercherId(long numeroPasseport) {
+		
 		Client cl = em.find(Client.class, numeroPasseport);
+		Query q = this.em.createQuery("SELECT r FROM Reservation r join  r.client cl WHERE cl.numeroPassport = :id");
+		q.setParameter("id", numeroPasseport);
+		cl.setReservations(q.getResultList());
 		return cl;
 	}
 
